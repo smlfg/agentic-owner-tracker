@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.agents/
+.codex/
+
+# Local, user-derived data. Demo data is committed separately.
+data/local-owner-map.json
+data/local-overrides.json

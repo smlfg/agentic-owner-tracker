@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Agentic Owner Tracker is a local-first HAI proof tool that maps agent days, overload, human grounding, and owner signals without storing raw prompts."
+  >
+  <title>Agentic Owner Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Agentic Owner Tracker home">
+      <span class="brand-mark">AOT</span>
+      <span>Agentic Owner Tracker</span>
+    </a>
+    <div class="top-actions">
+      <span class="privacy-badge">No raw prompts</span>
+      <a href="https://human-agent-interface.com" class="text-link">HAI</a>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="intro-panel" aria-labelledby="title">
+      <p class="eyebrow">Owner Signal Grid</p>
+      <h1 id="title">Did agent work stay ownable?</h1>
+      <p class="intro-copy">
+        A local-first grid for seeing where agents created momentum, overload,
+        human grounding, or one concrete decision the human could still own.
+      </p>
+      <div class="controls" aria-label="Data controls">
+        <button class="button primary" id="load-demo" type="button">Load demo</button>
+        <button class="button" id="load-local" type="button">Load local map</button>
+        <label class="file-button">
+          Import JSON
+          <input id="file-input" type="file" accept="application/json,.json">
+        </label>
+      </div>
+      <p class="status-line" id="status-line">Demo data loaded.</p>
+    </section>
+
+    <section class="map-panel" aria-labelledby="map-title">
+      <div class="map-heading">
+        <div>
+          <p class="eyebrow">Agentic state map</p>
+          <h2 id="map-title">Last 42 tracked days</h2>
+        </div>
+        <div class="source-card">
+          <span>Source</span>
+          <strong id="source-label">demo</strong>
+        </div>
+      </div>
+
+      <div class="metrics" aria-label="Summary metrics">
+        <div class="metric">
+          <span>Agent sessions</span>
+          <strong id="metric-sessions">0</strong>
+        </div>
+        <div class="metric">
+          <span>Overload days</span>
+          <strong id="metric-overload">0</strong>
+        </div>
+        <div class="metric">
+          <span>Owner signals</span>
+          <strong id="metric-owner">0</strong>
+        </div>
+        <div class="metric">
+          <span>Human days</span>
+          <strong id="metric-human">0</strong>
+        </div>
+      </div>
+
+      <div class="grid-wrap">
+        <div class="owner-grid" id="owner-grid" aria-label="Owner signal grid"></div>
+      </div>
+
+      <div class="legend" aria-label="Grid legend">
+        <span><i class="dot agent"></i>Agent day</span>
+        <span><i class="dot overload"></i>Overload</span>
+        <span><i class="dot human"></i>Human grounding</span>
+        <span><i class="dot owner"></i>Owner signal</span>
+        <span><i class="dot empty"></i>Empty</span>
+      </div>
+    </section>
+
+    <aside class="detail-panel" aria-labelledby="detail-title">
+      <p class="eyebrow">Selected day</p>
+      <h2 id="detail-title">Owner packet</h2>
+      <div class="day-state" id="day-state">Select a grid cell.</div>
+      <dl class="detail-list">
+        <div>
+          <dt>Date</dt>
+          <dd id="detail-date">-</dd>
+        </div>
+        <div>
+          <dt>State</dt>
+          <dd id="detail-state">-</dd>
+        </div>
+        <div>
+          <dt>Agent sessions</dt>
+          <dd id="detail-sessions">-</dd>
+        </div>
+        <div>
+          <dt>Observed events</dt>
+          <dd id="detail-events">-</dd>
+        </div>
+      </dl>
+      <div class="notes-box">
+        <span>Notes</span>
+        <p id="detail-notes">No notes for this day.</p>
+      </div>
+    </aside>
+
+    <section class="meaning-panel" aria-labelledby="meaning-title">
+      <p class="eyebrow">How to read it</p>
+      <h2 id="meaning-title">The grid is not a calendar. It is an ownership surface.</h2>
+      <div class="meaning-grid">
+        <article>
+          <span>01</span>
+          <h3>Agent</h3>
+          <p>The system moved. A session happened. Output entered the human world.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Overload</h3>
+          <p>Too many sessions ask the human to route, verify, remember, or stop.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Human</h3>
+          <p>A manual marker for grounding: a conversation, real-world feedback, or non-agent context.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Owner</h3>
+          <p>The point of HAI: one concrete next decision becomes holdable again.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

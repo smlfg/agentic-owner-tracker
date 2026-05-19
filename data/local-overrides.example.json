@@ -1,0 +1,15 @@
+{
+  "days": {
+    "2026-05-18": {
+      "state": "owner",
+      "owner_signals": 1,
+      "notes": ["One decision became ownable again."]
+    },
+    "2026-05-14": {
+      "state": "human",
+      "human_markers": 1,
+      "notes": ["Real human grounding happened here."]
+    }
+  }
+}
+
