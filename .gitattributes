@@ -1,0 +1,33 @@
+# Normalize line endings on checkout and re-apply LF on commit.
+# Keeps the codebase consistent across Windows / macOS / Linux without
+# having to argue about CRLF in code review.
+
+*               text=auto eol=lf
+
+# Explicit overrides — these should always be text + LF.
+*.md            text eol=lf
+*.txt           text eol=lf
+*.json          text eol=lf
+*.js            text eol=lf
+*.css           text eol=lf
+*.html          text eol=lf
+*.py            text eol=lf
+
+# Windows-only batch files keep their native CRLF if anyone ever adds one.
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+*.ps1           text eol=crlf
+
+# Mark generated / vendored JSON as vendored so GitHub's linguist
+# does not double-count it as project code.
+data/demo-owner-map.json        linguist-generated=true linguist-vendored=true
+
+# Do not export or localize these strings.
+LICENSE                         export-ignore
+PUBLISHING.md                   export-ignore
+.gitattributes                  export-ignore
+.gitignore                      export-ignore
+
+# Diff driver for JSONL session files (Codex archives live outside this
+# repo, but if a sample is ever added it should be treated as plain text).
+*.jsonl         text eol=lf diff=json
